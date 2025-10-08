@@ -1,0 +1,135 @@
+ @layer components {
+
+     /* Estilos base para conteúdo markdown */
+     .markdown-content {
+         @apply text-gray-800 leading-relaxed;
+     }
+
+     /* Parágrafos */
+     .markdown-content p {
+         @apply mb-4 text-[15px] leading-7;
+     }
+
+     .markdown-content p:last-child {
+         @apply mb-0;
+     }
+
+     /* Títulos */
+     .markdown-content h1 {
+         @apply text-2xl font-bold mb-4 mt-6 text-gray-900 pb-2 border-b border-gray-200;
+     }
+
+     .markdown-content h2 {
+         @apply text-xl font-semibold mb-3 mt-5 text-gray-900;
+     }
+
+     .markdown-content h3 {
+         @apply text-lg font-semibold mb-2 mt-4 text-gray-800;
+     }
+
+     .markdown-content h4 {
+         @apply text-base font-semibold mb-2 mt-3 text-gray-800;
+     }
+
+     /* Listas */
+     .markdown-content ul {
+         @apply mb-4 ml-6 space-y-2;
+     }
+
+     .markdown-content ol {
+         @apply mb-4 ml-6 space-y-2;
+     }
+
+     .markdown-content li {
+         @apply text-[15px] leading-7;
+     }
+
+     .markdown-content ul li {
+         @apply relative pl-2;
+     }
+
+     .markdown-content ul li::before {
+         content: "•";
+         @apply absolute -left-4 text-blue-600 font-bold;
+     }
+
+     .markdown-content ol {
+         @apply list-decimal;
+     }
+
+     /* Links */
+     .markdown-content a {
+         @apply text-blue-600 hover:text-blue-700 underline decoration-blue-600/30 hover:decoration-blue-700 transition-colors duration-200;
+     }
+
+     /* Código inline */
+     .markdown-content code {
+         @apply bg-gray-100 text-pink-600 px-1.5 py-0.5 rounded text-sm font-mono;
+     }
+
+     /* Blocos de código */
+     .markdown-content pre {
+         @apply bg-gray-900 text-gray-100 p-4 rounded-lg mb-4 overflow-x-auto shadow-sm;
+     }
+
+     .markdown-content pre code {
+         @apply bg-transparent text-gray-100 p-0 text-sm;
+     }
+
+     /* Citações */
+     .markdown-content blockquote {
+         @apply border-l-4 border-blue-500 pl-4 py-2 mb-4 bg-blue-50 text-gray-700 italic rounded-r;
+     }
+
+     /* Tabelas */
+     .markdown-content table {
+         @apply w-full mb-4 border-separate border-spacing-0 overflow-hidden rounded-lg shadow-sm;
+     }
+
+     .markdown-content thead {
+         @apply bg-gray-50;
+     }
+
+     .markdown-content th {
+         @apply px-6 py-3 text-left text-sm font-semibold text-gray-900 first:rounded-tl-lg last:rounded-tr-lg border-b-2 border-gray-200;
+     }
+
+     .markdown-content td {
+         @apply px-6 py-4 text-sm text-gray-700 bg-white border-b border-gray-100;
+     }
+
+     .markdown-content tbody tr:last-child td {
+         @apply border-b-0;
+     }
+
+     .markdown-content tbody tr:last-child td:first-child {
+         @apply rounded-bl-lg;
+     }
+
+     .markdown-content tbody tr:last-child td:last-child {
+         @apply rounded-br-lg;
+     }
+
+     .markdown-content tbody tr:hover td {
+         @apply bg-gray-50 transition-colors duration-200;
+     }
+
+     /* Linha horizontal */
+     .markdown-content hr {
+         @apply my-6 border-t border-gray-200;
+     }
+
+     /* Negrito e itálico */
+     .markdown-content strong {
+         @apply font-semibold text-gray-900;
+     }
+
+     .markdown-content em {
+         @apply italic;
+     }
+
+     /* Imagens */
+     .markdown-content img {
+         @apply max-w-full h-auto rounded-lg shadow-sm mb-4;
+     }
+ }

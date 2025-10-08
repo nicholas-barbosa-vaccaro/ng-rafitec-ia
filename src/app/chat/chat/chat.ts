@@ -20,7 +20,7 @@ export class Chat {
     if (!this.processing()) {
       this.processing.set(true)
       this.markdown.set("")
-      let eventSource = new EventSource(`http://localhost:8080/assistant/stream?prompt=${this.query()}`)
+      let eventSource = new EventSource(`https://abfassistant.app-vaccaro.com/assistant/stream?prompt=${this.query()}`)
       eventSource.onmessage = (event) => {
         let text = JSON.parse(event.data).text
         this.markdown.update(v => v + text)

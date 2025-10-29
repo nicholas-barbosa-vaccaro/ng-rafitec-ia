@@ -16,18 +16,21 @@ export class Chat {
   markdown = signal("")
   processing = signal(false)
   negocio: string | null=null;
+  conversationId = '';
   constructor(private aiSerivce: AiService, private markdownService: MarkdownService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.negocio = this.route.snapshot.paramMap.get('negocio');
-    console.log(this.negocio)
+    this.aiSerivce.getConversationId().subscribe(r=>{
+      this.conversationId = r.id
+    })
   }
 
   sendQuery(): void {
     if (!this.processing()) {
       this.processing.set(true)
       this.markdown.set("")
-      let eventSource = new EventSource(`https://abfassistant.app-vaccaro.com/assistant/stream/${this.negocio}?prompt=${this.query()}`)
+      let eventSource = new EventSource(`https://abfassistant.app-vaccaro.com/assistant/stream/${this.negocio}?prompt=${this.query()}&conversationId=${this.conversationId}`)
       eventSource.onmessage = (event) => {
         let text = JSON.parse(event.data).text
         this.markdown.update(v => v + text)

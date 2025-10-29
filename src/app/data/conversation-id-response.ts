@@ -1,0 +1,3 @@
+interface ConversationIdResponse{
+    id:string;
+}

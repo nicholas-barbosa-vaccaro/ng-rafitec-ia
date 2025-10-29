@@ -13,4 +13,8 @@ export class AiService {
     return this.sseClient.stream('http://localhost:8080/assistant/stream', { keepAlive: true, reconnectionDelay: 1_000, responseType: 'event' }, { params: { prompt: query } }, 'GET')
   //  return this.httpClient.get<AiResponse>('http://localhost:8080/assistant', { params: { prompt: query }, })
   }
+
+  getConversationId(){
+    return this.httpClient.get<ConversationIdResponse>('https://abfassistant.app-vaccaro.com/assistant/conversation');
+  }
 }

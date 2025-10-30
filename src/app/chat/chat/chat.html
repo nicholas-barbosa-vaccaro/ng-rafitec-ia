@@ -3,15 +3,28 @@
         <h2 class="text-2xl font-bold">Rafitec IA Comercial</h2>
     </div>
 
-    <div #scrollContainer class="w-3/4 flex-1 overflow-y-auto p-4">
+    <div class="w-3/4 flex-1 overflow-y-auto p-4">
         <div class="flex flex-col gap-6 ">
+            @for(message of messages();track message){
+            <div class="flex  p-4"
+                [ngClass]="{'justify-end':message.type==='user','bg-gray-100':message.type==='user'}">
+                @if (message.type==='assistant') {
+                <markdown ngPreserveWhitespaces class="markdown-content" [data]="message.content"></markdown>
+                }@else {
+                {{message.content}}
+                }
+            </div>
+
+            }
+            <div #markdownContainer>
+            </div>
+            @if(processing()){
             <markdown ngPreserveWhitespaces class="markdown-content" [data]="markdown()"></markdown>
+            <div>
+                <p-progress-spinner ariaLabel="loading" [style]="{ width: '50px', height: '50px' }" />
+            </div>
+            }
         </div>
-        @if(processing()){
-        <div>
-            <p-progress-spinner ariaLabel="loading" [style]="{ width: '50px', height: '50px' }"/>
-        </div>
-        }
     </div>
 
     <div class="w-3/4 mt-auto mb-12">
